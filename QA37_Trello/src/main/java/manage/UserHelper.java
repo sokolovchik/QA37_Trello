@@ -27,4 +27,19 @@ public class UserHelper extends HelperBase{
     public boolean isLogged() {
         return wd.findElements(By.cssSelector("[data-testid='header-member-menu-button']")).size()>0;
     }
+
+    public void logOut() {
+        click(By.cssSelector("[data-testid='header-member-menu-button']"));
+        click(By.cssSelector("[data-testid='account-menu-logout']"));
+        click(By.cssSelector("#logout-submit"));
+    }
+
+    public void login(String email, String password) {
+        click(By.cssSelector("[href='/login']"));
+        type(By.cssSelector("#user"),email);
+        click(By.cssSelector("#login"));
+        pause(2000);
+        type(By.cssSelector("#password"),password);
+        click(By.cssSelector("#login-submit"));
+    }
 }
